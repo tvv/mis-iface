@@ -4,6 +4,7 @@ import User exposing (User)
 import Html exposing (Html, button, div, table, tbody, td, text, th, thead, tr)
 import Html.Events exposing (onClick)
 import String
+import Http exposing (Error(BadPayload, BadStatus, NetworkError), getString, send)
 
 
 type alias Model =
@@ -19,7 +20,7 @@ head =
     ]
 
 
-view : Model -> Html Message
+view : Model -> Html Action
 view users =
     let
         th_ field =
@@ -31,7 +32,7 @@ view users =
             ]
 
 
-userRow : User -> Html Message
+userRow : User -> Html Action
 userRow user =
     tr []
         [ td []
@@ -44,12 +45,49 @@ userRow user =
         ]
 
 
-type Message
+type Action
     = Remove Int
+    | Removed Int
 
 
-update : Message -> Model -> ( Model, Cmd msg )
+update : Action -> Model -> ( Model, Cmd Action )
 update msg model =
     case msg of
         Remove id ->
+            ( model, remove id )
+
+        Removed id ->
             ( List.filter (\user -> user.id /= id) model, Cmd.none )
+
+
+remove : Int -> Cmd Action
+remove id =
+    let
+        url =
+            "http://google.com/?q=" ++ (toString id)
+    in
+        send (checkRemoved id) (getString url)
+
+
+checkRemoved : Int -> Result Http.Error String -> Action
+checkRemoved id result =
+    case result of
+        Ok _ ->
+            Removed id
+
+        Err e ->
+            case e of
+                BadStatus response ->
+                    if response.status.code >= 400 then
+                        Removed -1
+                    else
+                        Removed id
+
+                BadPayload s response ->
+                    Removed id
+
+                NetworkError ->
+                    Removed id
+
+                _ ->
+                    Removed -1

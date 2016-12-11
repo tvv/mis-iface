@@ -25,7 +25,7 @@ init =
 
 type Msg
     = Nothing
-    | UserMsg UserListWidget.Message
+    | UserMsg UserListWidget.Action
 
 
 
