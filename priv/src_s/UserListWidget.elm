@@ -4,7 +4,7 @@ import User exposing (User)
 import Html exposing (Html, button, div, table, tbody, td, text, th, thead, tr)
 import Html.Events exposing (onClick)
 import String
-import Http exposing (Error(BadPayload, BadStatus, NetworkError), getString, send)
+import Http
 
 
 type alias Model =

@@ -1,0 +1,26 @@
+{application, wa,
+ [
+  {description, "Mis-iface"},
+  {vsn, "0.0.1"},
+  {modules, []},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib,
+    sasl,
+    lager,
+    asn1,
+    ssl,
+    public_key,
+    crypto,
+    gproc,
+    ranch,
+    cowlib,
+    cowboy,
+    gun,
+    pooler,
+    ux
+   ]},
+  {mod, { wa_app, []}},
+  {env, []}
+ ]}.
