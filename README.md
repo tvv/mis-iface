@@ -13,6 +13,8 @@ Build frontend with command: `cd frontend && make`
 
 Run backend Erlang application with command `make run`
 
+Interface avaliable at address `http://locahost:8080`
+
 Usefull links
 =====================
 
