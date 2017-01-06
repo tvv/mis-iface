@@ -1,4 +1,4 @@
-Intallation notes
+Installation notes
 =====================
 
 Required software/libraries:
