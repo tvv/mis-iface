@@ -1,0 +1,31 @@
+{
+  "name": "mis_iface",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "css-loader": "^0.23.1",
+    "elm-webpack-loader": "^3.0.1",
+    "file-loader": "^0.8.5",
+    "glob": "^7.1.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "html-webpack-plugin": "^2.17.0",
+    "webpack": "^1.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tvv/mis-iface.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tvv/mis-iface/issues"
+  },
+  "homepage": ""
+}

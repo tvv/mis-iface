@@ -14,7 +14,9 @@ else
 	CONFIG=config/sys.config
 endif
 
-all: compile
+all: 
+	webpack
+	compile
 
 $(REBAR):
 	$(ERL) \
