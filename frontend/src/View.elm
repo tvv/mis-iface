@@ -5,28 +5,38 @@ import Messages exposing (Msg(..))
 import Models exposing (Model)
 import Routing exposing (Route(..))
 import Auth.View
--- import Dashboard.View
+import Auth.Models exposing (User(Anonymous))
+import Dashboard.View
 
 
 view : Model -> Html Msg
 view model =
-  div []
-    [ page model ]
+  case model.user of
+    Anonymous ->
+      div [] 
+        [ login model ]
+    _ ->
+      div []
+        [ page model ]
 
 
 page : Model -> Html Msg
 page model =
   case model.route of
     Login ->
-      Auth.View.login model.auth
-        |> Html.map AuthMsg
+      login model
 
     Dashboard ->
-      text "Dashboard"
-      -- Dashboard.View model.user
+      Dashboard.View.view model
 
     NotFoundRoute ->
       notFoundView
+
+
+login : Model -> Html Msg
+login model =
+  Auth.View.login model.auth
+        |> Html.map AuthMsg
 
 
 notFoundView : Html msg

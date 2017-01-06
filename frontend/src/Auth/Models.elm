@@ -3,7 +3,6 @@ module Auth.Models exposing (..)
 
 type alias Auth =
   { token: Maybe String
-  , authenticated : Bool
   , login : Maybe String
   , password : Maybe String
   , error: Maybe String
@@ -32,7 +31,6 @@ type alias AuthInfo =
 initialAuthModel : Auth
 initialAuthModel =
   { token = Nothing
-  , authenticated = False
   , login = Nothing
   , password = Nothing
   , error = Nothing
